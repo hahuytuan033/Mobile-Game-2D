@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "2d game clone.sln"
+    "dotnet.defaultSolution": "Mobile-Game-2D.sln"
 }
