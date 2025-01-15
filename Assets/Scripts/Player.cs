@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private float jumpHeight = 5f;
 
+    public bool doubleJump;
+
     public bool isGrounded = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -44,6 +46,14 @@ public class Player : MonoBehaviour
             velocity.y = jumpHeight;
             rb.linearVelocity = velocity;
             isGrounded = false;
+            doubleJump = true;
+        }
+        else if (doubleJump)
+        {
+            Vector2 velocity = rb.linearVelocity;
+            velocity.y = jumpHeight;
+            rb.linearVelocity = velocity;
+            doubleJump = false;
         }
     }
 
