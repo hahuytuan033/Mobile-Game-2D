@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
         }
         else if (doubleJump)
         {
+            //double jump
             Vector2 velocity = rb.linearVelocity;
             velocity.y = jumpHeight;
             rb.linearVelocity = velocity;
