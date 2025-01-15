@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private float jumpHeight = 5f;
 
-    public bool isGrounded= true;
+    public bool isGrounded = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,9 +37,21 @@ public class Player : MonoBehaviour
     //Jump with Jump Button
     public void JumpButton()
     {
-        Vector2 velocity = rb.linearVelocity;
-        velocity.y = jumpHeight;
-        rb.linearVelocity= velocity;
+        //check if the player is on the ground
+        if (isGrounded == true)
+        {
+            Vector2 velocity = rb.linearVelocity;
+            velocity.y = jumpHeight;
+            rb.linearVelocity = velocity;
+            isGrounded = false;
+        }
     }
-    
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            isGrounded = true;
+        }
+    }
 }
